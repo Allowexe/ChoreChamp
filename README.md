@@ -61,6 +61,10 @@ The backend server should now be running on `http://localhost:3000`.
    vim api.js
    ```
 
+   ```js
+   const API_URL = "http://192.168.X.X:3000"; // Your IP address here
+   ```
+
 4. **Start the Expo development server**:
 
    ```sh
