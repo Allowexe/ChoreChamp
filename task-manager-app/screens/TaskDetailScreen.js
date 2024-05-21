@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Button, StyleSheet, Alert } from 'react-native';
 import api from '../api/api';
+import { commonStyles } from '../styles/common';
 
 const TaskDetailScreen = ({ route, navigation }) => {
     const { taskId } = route.params;
     const [task, setTask] = useState(null);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(false);
 
     const fetchTask = async () => {
         try {
             const response = await api.get(`/tasks/${taskId}`);
             setTask(response.data);
+            setError(false);
         } catch (error) {
-            setError(error.message);
+            setError(true);
             Alert.alert('Failed to fetch task', error.message);
             console.error('Failed to fetch task:', error);
         }
@@ -24,6 +26,7 @@ const TaskDetailScreen = ({ route, navigation }) => {
             setTask(response.data);
             Alert.alert('Task status updated successfully');
         } catch (error) {
+            setError(true);
             Alert.alert('Failed to update task status', error.message);
             console.error('Failed to update task status:', error);
         }
@@ -38,10 +41,10 @@ const TaskDetailScreen = ({ route, navigation }) => {
     }
 
     return (
-        <View style={styles.container}>
-            <Text>Title: {task.title}</Text>
-            <Text>Description: {task.description}</Text>
-            <Text>Status: {task.status}</Text>
+        <View style={[commonStyles.container, error ? commonStyles.errorBackground : commonStyles.normalBackground]}>
+            <Text style={styles.centerText}>Title: {task.title}</Text>
+            <Text style={styles.centerText}>Description: {task.description}</Text>
+            <Text style={styles.centerText}>Status: {task.status}</Text>
             <Button title="Edit Task" onPress={() => navigation.navigate('CreateTask', { task })} />
             <Button title="Delete Task" onPress={async () => {
                 try {
@@ -49,6 +52,7 @@ const TaskDetailScreen = ({ route, navigation }) => {
                     Alert.alert('Task deleted successfully');
                     navigation.navigate('Tasks');
                 } catch (error) {
+                    setError(true);
                     Alert.alert('Failed to delete task', error.message);
                     console.error('Failed to delete task:', error);
                 }
@@ -62,7 +66,7 @@ const TaskDetailScreen = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    container: { flex: 1, padding: 16 },
+    error: { color: 'red', marginBottom: 16 },
 });
 
 export default TaskDetailScreen;
