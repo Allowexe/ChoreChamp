@@ -16,7 +16,6 @@ const TaskListScreen = ({ navigation }) => {
             setError(false);
         } catch (error) {
             setError(true);
-            console.error('Failed to fetch tasks:', error);
         }
     };
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as SecureStore from 'expo-secure-store';
 
-const API_URL = 'http://192.168.0.27:3000';
+const API_URL = 'http://192.168.X.X:3000'; // Your IP address here
 
 const getAuthToken = async () => {
     return await SecureStore.getItemAsync('token');

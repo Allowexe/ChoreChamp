@@ -55,13 +55,19 @@ The backend server should now be running on `http://localhost:3000`.
    npm install
    ```
 
-3. **Start the Expo development server**:
+3. **Add your IP address into the api.js file**
+
+   ```sh
+   vim api.js
+   ```
+
+4. **Start the Expo development server**:
 
    ```sh
    npx expo start
    ```
 
-4. **Run the app on your device**:
+5. **Run the app on your device**:
    - For iOS: Use the Expo Go app to scan the QR code displayed in the terminal or browser.
    - For Android: Use the Expo Go app to scan the QR code displayed in the terminal or browser.
 
