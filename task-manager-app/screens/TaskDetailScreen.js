@@ -16,7 +16,6 @@ const TaskDetailScreen = ({ route, navigation }) => {
         } catch (error) {
             setError(true);
             Alert.alert('Failed to fetch task', error.message);
-            console.error('Failed to fetch task:', error);
         }
     };
 
@@ -28,7 +27,6 @@ const TaskDetailScreen = ({ route, navigation }) => {
         } catch (error) {
             setError(true);
             Alert.alert('Failed to update task status', error.message);
-            console.error('Failed to update task status:', error);
         }
     };
 
@@ -54,7 +52,6 @@ const TaskDetailScreen = ({ route, navigation }) => {
                 } catch (error) {
                     setError(true);
                     Alert.alert('Failed to delete task', error.message);
-                    console.error('Failed to delete task:', error);
                 }
             }} />
             <Button
