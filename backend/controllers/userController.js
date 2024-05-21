@@ -8,11 +8,9 @@ exports.register = async (req, res) => {
         await user.save();
         res.status(201).send({ message: 'User registered successfully' });
     } catch (error) {
-        console.error('Registration error:', error); // Log error details
         res.status(400).send({ error: error.message });
     }
 };
-
 
 exports.login = async (req, res) => {
     try {
