@@ -54,3 +54,19 @@ exports.getTaskById = async (req, res) => {
         res.status(400).send({ error: error.message });
     }
 };
+
+exports.updateTaskStatus = async (req, res) => {
+    try {
+        const task = await Task.findOneAndUpdate(
+            { _id: req.params.id, userId: req.user.id },
+            { status: req.body.status },
+            { new: true }
+        );
+        if (!task) {
+            return res.status(404).send({ message: 'Task not found' });
+        }
+        res.send(task);
+    } catch (error) {
+        res.status(400).send({ error: error.message });
+    }
+};

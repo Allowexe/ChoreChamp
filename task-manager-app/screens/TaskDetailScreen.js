@@ -18,6 +18,17 @@ const TaskDetailScreen = ({ route, navigation }) => {
         }
     };
 
+    const changeTaskStatus = async (newStatus) => {
+        try {
+            const response = await api.patch(`/tasks/${taskId}/status`, { status: newStatus });
+            setTask(response.data);
+            Alert.alert('Task status updated successfully');
+        } catch (error) {
+            Alert.alert('Failed to update task status', error.message);
+            console.error('Failed to update task status:', error);
+        }
+    };
+
     useEffect(() => {
         fetchTask();
     }, []);
@@ -42,6 +53,10 @@ const TaskDetailScreen = ({ route, navigation }) => {
                     console.error('Failed to delete task:', error);
                 }
             }} />
+            <Button
+                title={`Mark as ${task.status === 'pending' ? 'Done' : 'Pending'}`}
+                onPress={() => changeTaskStatus(task.status === 'pending' ? 'done' : 'pending')}
+            />
         </View>
     );
 };
