@@ -101,7 +101,7 @@ The backend server should now be running on `http://localhost:3000`.
 3. **Start the Expo development server**:
 
    ```sh
-   expo start
+   npx expo start
    ```
 
 4. **Run the app on your device**:
