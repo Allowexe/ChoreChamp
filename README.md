@@ -55,7 +55,7 @@ The backend server should now be running on `http://localhost:3000`.
    npm install
    ```
 
-3. **Setup the API's IP address**
+3. **Setup the API's IP address**:
 
    ```sh
    vim api.js
