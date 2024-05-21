@@ -7,49 +7,6 @@ This is a task manager application that allows users to register, log in, create
 - **Backend**: Built with Node.js, Express.js, and MongoDB.
 - **Frontend**: Built with React Native and Expo.
 
-## Project Structure
-
-```
-task-manager/
-├── backend/
-│   ├── controllers/
-│   │   ├── taskController.js
-│   │   └── userController.js
-│   ├── middlewares/
-│   │   └── auth.js
-│   ├── models/
-│   │   ├── task.js
-│   │   └── user.js
-│   ├── routes/
-│   │   ├── tasks.js
-│   │   └── users.js
-│   ├── config.js
-│   ├── app.js
-│   ├── server.js
-│   └── package.json
-├── frontend/
-│   ├── assets/
-│   │   └── logo.webp
-│   ├── components/
-│   │   └── TaskItem.js
-│   ├── screens/
-│   │   ├── LoginScreen.js
-│   │   ├── RegisterScreen.js
-│   │   ├── TaskListScreen.js
-│   │   ├── TaskDetailScreen.js
-│   │   └── CreateTaskScreen.js
-│   ├── styles/
-│   │   └── common.js
-│   ├── api/
-│   │   └── api.js
-│   ├── App.js
-│   ├── app.json
-│   ├── babel.config.js
-│   ├── index.js
-│   └── package.json
-└── README.md
-```
-
 ## Backend Setup
 
 1. **Navigate to the backend directory**:
