@@ -42,3 +42,15 @@ exports.deleteTask = async (req, res) => {
         res.status(400).send({ error: error.message });
     }
 };
+
+exports.getTaskById = async (req, res) => {
+    try {
+        const task = await Task.findOne({ _id: req.params.id, userId: req.user.id });
+        if (!task) {
+            return res.status(404).send({ message: 'Task not found' });
+        }
+        res.send(task);
+    } catch (error) {
+        res.status(400).send({ error: error.message });
+    }
+};

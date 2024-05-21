@@ -5,6 +5,7 @@ const auth = require('../middlewares/auth');
 
 router.post('/', auth, taskController.createTask);
 router.get('/', auth, taskController.getTasks);
+router.get('/:id', auth, taskController.getTaskById); // Add this route
 router.put('/:id', auth, taskController.updateTask);
 router.delete('/:id', auth, taskController.deleteTask);
 

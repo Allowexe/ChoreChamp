@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, Alert } from 'react-native';
 import api from '../api/api';
 
 const TaskDetailScreen = ({ route, navigation }) => {
     const { taskId } = route.params;
     const [task, setTask] = useState(null);
+    const [error, setError] = useState(null);
 
     const fetchTask = async () => {
         try {
             const response = await api.get(`/tasks/${taskId}`);
             setTask(response.data);
         } catch (error) {
-            alert('Failed to fetch task.');
+            setError(error.message);
+            Alert.alert('Failed to fetch task', error.message);
+            console.error('Failed to fetch task:', error);
         }
     };
 
@@ -32,10 +35,11 @@ const TaskDetailScreen = ({ route, navigation }) => {
             <Button title="Delete Task" onPress={async () => {
                 try {
                     await api.delete(`/tasks/${taskId}`);
-                    alert('Task deleted successfully');
+                    Alert.alert('Task deleted successfully');
                     navigation.navigate('Tasks');
                 } catch (error) {
-                    alert('Failed to delete task.');
+                    Alert.alert('Failed to delete task', error.message);
+                    console.error('Failed to delete task:', error);
                 }
             }} />
         </View>

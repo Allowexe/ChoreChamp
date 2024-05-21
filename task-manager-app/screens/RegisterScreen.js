@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import api from '../api/api';
 
 const RegisterScreen = ({ navigation }) => {
@@ -10,10 +10,11 @@ const RegisterScreen = ({ navigation }) => {
     const handleRegister = async () => {
         try {
             await api.post('/users/register', { username, email, password });
-            alert('Registration successful! Please log in.');
+            Alert.alert('Registration successful!', 'Please log in.');
             navigation.navigate('Login');
         } catch (error) {
-            alert('Registration failed. Please try again.');
+            console.error('Registration failed:', error); // Log error details
+            Alert.alert('Registration failed', 'Please try again.');
         }
     };
 
