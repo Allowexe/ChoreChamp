@@ -1,4 +1,5 @@
 # Task Manager Application
+### /!\ THIS IS A STUDENT PROJECT, IT MAY HAVE SOME ISSUES /!\
 
 ## Project Overview
 
@@ -57,11 +58,7 @@ The backend server should now be running on `http://localhost:3000`.
 
 3. **Setup the API's IP address**:
 
-   ```sh
-   vim api.js
-   ```
-
-   Add your IP address into the `api.js` file:
+   Add your local IP address into the `api.js` file:
 
    ```js
    const API_URL = "http://192.168.X.X:3000"; // Your IP address here
